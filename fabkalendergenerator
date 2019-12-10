@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+
+import os
+import getopt
+import re
+
+weekdays=['montag','dienstag','mittwoch','donnerstag','freitag','samstag','sonntag']
+
+
+
+def main(argv):
+
+    try:
+        opts, optargs = getopt.getopt(argv, "h?", ["monat=","jahr=","tag="])
+
+    except getopt.ParameterError:
+        sys.exit(2)
+
+    monat=jahr=tag=''
+    for opt, arg in opts:
+        if opt in ("--monat"):
+            monat= arg
+	if opt in ("--tag"):
+	   tag= arg
+	if opt in ("--jahr"):
+	   jahr= arg
+        if opt in ("-?","-h"):
+            print("labkalendergenerator   [-h] [-?] [--silent]\n"
+                  "-h,-?      diese Hilfe-Seite\n"
+                  "--tag    Der Wochentag des 1 Tags des Monats\n",
+		  "--monat  Monatsname, optional\n",
+		  "--jahr    Jahr, optional\n")
+            sys.exit(0);
+    
+    if tag=='': sys.exit("Parameter tag fehlt\n")
+    if tag not in (weekdays): sys.exit("Unbekannter Wochenname")
+
+    wochentag= weekdays.index(tag)
+
+    header(monat,jahr)
+    
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
