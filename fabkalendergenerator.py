@@ -25,13 +25,14 @@ def tabelle (monat, jahr):
     for (tag,wochentag) in cal.itermonthdays2(jahr,monat):
         if tag==0:
             continue
-        if daystoprint[wochentag]:
-            print (f"|{tag}.{monat}.|{weekdays[wochentag]}| | | |")
         if wochentag==3:
             donnerstage+= 1
             if donnerstage==3:
                 print (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |")
                 print (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |")
+                continue
+        if daystoprint[wochentag]:
+            print (f"|{tag}.{monat}.|{weekdays[wochentag]}| | | |")
     print("\n\n")
             
 
