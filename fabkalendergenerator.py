@@ -20,21 +20,23 @@ def header (monat, jahr):
 
 def tabelle (monat, jahr):
     donnerstage=0
-    print ("^Datum^Wochentag^   \\ Labsitter \\   \\ 18-20Uhr^   \\ Labsitter \\   \\ 20-22 Uhr^Kommentar|\n")
+
+    out = ("^Datum^Wochentag^   \\ Labsitter \\   \\ 18-20Uhr^   \\ Labsitter \\   \\ 20-22 Uhr^Kommentar|\n")
     cal= calendar.Calendar()
-    for (tag,wochentag) in cal.itermonthdays2(jahr,monat):
+    for (tag, wochentag) in cal.itermonthdays2(int(jahr), int(monat)):
         if tag==0:
             continue
         if wochentag==3:
             donnerstage+= 1
             if donnerstage==3:
-                print (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |")
-                print (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |")
+                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |")
+                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |")
                 continue
         if daystoprint[wochentag]:
-            print (f"|{tag}.{monat}.|{weekdays[wochentag]}| | | |")
-    print("\n\n")
-            
+            out += (f"|{tag}.{monat}.|{weekdays[wochentag]}| | | |\n")
+    out += ("\n\n")
+    print(out)
+    return out
 
 def main(argv):
 
