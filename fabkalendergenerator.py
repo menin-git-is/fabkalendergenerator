@@ -29,8 +29,8 @@ def tabelle (monat, jahr):
         if wochentag==3:
             donnerstage+= 1
             if donnerstage==3:
-                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |")
-                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |")
+                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |\n")
+                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |\n")
                 continue
         if daystoprint[wochentag]:
             out += (f"|{tag}.{monat}.|{weekdays[wochentag]}| | | |\n")

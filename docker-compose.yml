@@ -1,0 +1,17 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "10123:10123"
+    environment:
+      - VIRTUAL_HOST=fabkalender.caroli.cc
+      - VIRTUAL_NETWORK=nginx-proxy
+      - VIRTUAL_PORT=10123
+      - LETSENCRYPT_HOST=fabkalender.caroli.cc
+      - LETSENCRYPT_EMAIL=philip@caroli.de
+
+networks:
+  default:
+    external:
+      name: webproxy
