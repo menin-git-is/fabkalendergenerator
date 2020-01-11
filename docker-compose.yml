@@ -3,11 +3,11 @@ services:
   web:
     build: .
     ports:
-     - "10123:10123"
+     - "10125:10125"
     environment:
       - VIRTUAL_HOST=fabkalender.caroli.cc
       - VIRTUAL_NETWORK=nginx-proxy
-      - VIRTUAL_PORT=10123
+      - VIRTUAL_PORT=10125
       - LETSENCRYPT_HOST=fabkalender.caroli.cc
       - LETSENCRYPT_EMAIL=philip@caroli.de
 
