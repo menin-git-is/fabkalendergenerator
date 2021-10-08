@@ -10,7 +10,8 @@ import locale
 
 weekdays=['Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sonntag']
 
-daystoprint=[True,False,True,False,True,True,False]
+# 1== Tag ist normal gelistet, 2== Tag ist hervorgehoben
+daystoprint=[1,2,1,2,1,1,0]
 
 
 
@@ -28,12 +29,14 @@ def tabelle (monat, jahr):
             continue
         if wochentag==3:
             donnerstage+= 1
-            if donnerstage==3:
-                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |\n")
-                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |\n")
-                continue
-        if daystoprint[wochentag]:
+#            if donnerstage==3:
+#                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |\n")
+#                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |\n")
+#                continue
+        if daystoprint[wochentag]==1:
             out += (f"|{tag}.{monat}.|{weekdays[wochentag]}| | | |\n")
+        if daystoprint[wochentag]==2:
+            out += (f"|**{tag}.{monat}.**|**{weekdays[wochentag]}**| | |**OFFEN** |\n")
     out += ("\n\n")
     print(out)
     return out
