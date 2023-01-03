@@ -11,7 +11,7 @@ import locale
 weekdays=['Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sonntag']
 
 # 1== Tag ist normal gelistet, 2== Tag ist hervorgehoben 3== Erster Block ist hervorgehoben
-daystoprint=[1,3,3,3,1,1,0]
+daystoprint=[1,3,3,3,1,1,1]
 
 ############################
 
@@ -24,7 +24,7 @@ def header (monat, jahr):
 def tabelle (monat, jahr):
     donnerstage=0
 
-    out = ("^Datum^Wochentag^   \\ Labsitter \\   \\ 18-20Uhr^   \\ Labsitter \\   \\ 20-22 Uhr^Kommentar|\n")
+    out = ("^Datum^Wochentag^Tagsüber^18-20Uhr^20-22 Uhr^Kommentar|\n")
     cal= calendar.Calendar()
     for (tag, wochentag) in cal.itermonthdays2(int(jahr), int(monat)):
         if tag==0:
@@ -32,15 +32,17 @@ def tabelle (monat, jahr):
         if wochentag==3:
             donnerstage+= 1
 #            if donnerstage==3:
-#                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |\n")
-#                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | |**OpenLabDay** |\n")
+#                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | | |**OpenLabDay** |\n")
+#                out += (f"|{tag}.{monat}.|**{weekdays[wochentag]}**| | | |**OpenLabDay** |\n")
 #                continue
         if daystoprint[wochentag]==1:
-            out += (f"|{tag}.{monat}.|{weekdays[wochentag]}| | | |\n")
+            out += (f"|{tag}.{monat}.|{weekdays[wochentag]}| | | | |\n")
         if daystoprint[wochentag]==2:
-            out += (f"|**{tag}.{monat}.**|**{weekdays[wochentag]}**^ ^ | |\n")
+            out += (f"|**{tag}.{monat}.**|**{weekdays[wochentag]}**| ^ ^ | |\n")
         if daystoprint[wochentag]==3:
-            out += (f"|**{tag}.{monat}.**|**{weekdays[wochentag]}**^ | | |\n")
+            out += (f"|**{tag}.{monat}.**|**{weekdays[wochentag]}**| ^ | | |\n")
+        if wochentag==6:
+            out += (f"||||||\n");
     out += ("\n\n")
     print(out)
     return out
