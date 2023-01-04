@@ -42,7 +42,7 @@ def tabelle (monat, jahr):
         if daystoprint[wochentag]==3:
             out += (f"|**{tag}.{monat}.**|**{weekdays[wochentag]}**| ^ | | |\n")
         if wochentag==6:
-            out += (f"||||||\n");
+            out += (f"^ ||||||\n");
     out += ("\n\n")
     print(out)
     return out
