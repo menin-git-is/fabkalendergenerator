@@ -57,7 +57,7 @@ def main(argv):
     try:
         opts, optargs = getopt.getopt(argv,"", ["monat=","jahr=","help"])
 
-    except getopt.ParameterError:
+    except getopt.GetoptError:
         sys.exit(2)
 
     monat=jahr=''
